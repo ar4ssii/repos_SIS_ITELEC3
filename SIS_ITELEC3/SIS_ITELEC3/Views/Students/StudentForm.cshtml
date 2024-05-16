@@ -17,11 +17,18 @@
         @Html.TextBoxFor(s => s.Student.Address, new { @class = "form-control" })
         @Html.ValidationMessageFor(s => s.Student.Address)
     </div>
-    <div class="form-group">
+    @*<div class="form-group">
         @Html.LabelFor(s => s.Student.Year)
         @Html.TextBoxFor(s => s.Student.Year, new { @class = "form-control" })
         @Html.ValidationMessageFor(s => s.Student.Year)
+    </div>*@
+
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.Year)
+        @Html.DropDownListFor(s => s.Student.Year, new SelectList(new[] { "1st", "2nd", "3rd", "4th" }), "Select Year", new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.Year)
     </div>
+
     <div class="form-group">
         @Html.LabelFor(s => s.Student.Section)
         @Html.TextBoxFor(s => s.Student.Section, new { @class = "form-control" })
