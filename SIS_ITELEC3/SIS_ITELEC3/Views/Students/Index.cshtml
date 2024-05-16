@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Students";
+}
+
+<h2>@ViewBag.Title</h2>
+<p>
+    @Html.ActionLink("New Student", "New", "Students", null, new { @class = "btn btn-primary" })
+</p>
+<table id="student" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Year</th>
+            <th>Section</th>
+            <th>Age</th>
+            <th>Birthdate</th>
+            <th>Course</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#student").DataTable({
+                ajax: {
+                    url: "api/students",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, student) {
+                            return "<a href='/students/edit/" + student.id + "'>" + student.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "address",
+                    },
+                    {
+                        data: "year",
+                    },
+                    {
+                        data: "section",
+                    },
+                    {
+                        data: "age",
+                    },
+                    {
+                        data: "birthdate",
+                        render: function (data) {
+                            var date = new Date(data);
+                            var formattedDate = date.toLocaleDateString('en-PH', { month: 'short', day: 'numeric', year: 'numeric' });
+                            return formattedDate;
+                        }
+                    },
+                    {
+                        data: "course.name",
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn btn-primary js-delete' data-student-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#student").on("click", ".js-delete", function () {
+                var button = $(this);
+                bootbox.confirm("Are you sure you want to delete this student?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "api/students/" + button.attr("data-student-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}

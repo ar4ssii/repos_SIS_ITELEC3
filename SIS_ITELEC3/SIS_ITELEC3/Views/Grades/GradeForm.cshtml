@@ -1,0 +1,30 @@
+﻿@model SIS_ITELEC3.viewModels.GradeFormViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Grades"))
+{
+    <div class="form-group">
+        @Html.LabelFor(g => g.Grade.Rating)
+        @Html.TextBoxFor(g => g.Grade.Rating, new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.Grade.Rating)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.Grade.StudentId)
+        @Html.DropDownListFor(g => g.Grade.StudentId, new SelectList(Model.Student, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.Grade.StudentId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(g => g.Grade.SubjectId)
+        @Html.DropDownListFor(g => g.Grade.SubjectId, new SelectList(Model.Subject, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.Grade.SubjectId)
+    </div>
+
+    @Html.HiddenFor(g => g.Grade.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

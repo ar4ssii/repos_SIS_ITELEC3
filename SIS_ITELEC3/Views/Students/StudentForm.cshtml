@@ -1,0 +1,68 @@
+﻿@model SIS_ITELEC3.viewModels.StudentFormViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Students"))
+{
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.Name)
+        @Html.TextBoxFor(s => s.Student.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.Address)
+        @Html.TextBoxFor(s => s.Student.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.Address)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.Year)
+        @Html.TextBoxFor(s => s.Student.Year, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.Year)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.Section)
+        @Html.TextBoxFor(s => s.Student.Section, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.Section)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.Birthdate)
+        @Html.TextBoxFor(s => s.Student.Birthdate, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date", @id = "birthdate" })
+        @Html.ValidationMessageFor(s => s.Student.Birthdate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.Age)
+        @Html.TextBoxFor(s => s.Student.Age, new { @class = "form-control", @id = "age", @readonly = "readonly" })
+        @Html.ValidationMessageFor(s => s.Student.Age)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(s => s.Student.CourseId)
+        @Html.DropDownListFor(s => s.Student.CourseId, new SelectList(Model.Course, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Student.CourseId)
+    </div>
+
+    @Html.HiddenFor(s => s.Student.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#birthdate").change(function () {
+                var dob = new Date($(this).val());
+                var today = new Date();
+                var age = today.getFullYear() - dob.getFullYear();
+                var m = today.getMonth() - dob.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+                $("#age").val(age);
+            });
+        });
+    </script>
+}
