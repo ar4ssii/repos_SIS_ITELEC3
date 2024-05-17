@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace SIS_ITELEC3.Controllers
 {
+    [AllowAnonymous]  //accessible
     public class HomeController : Controller
     {
         public ActionResult Index()

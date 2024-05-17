@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Instructors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+
+<table id="instructor" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+             </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#instructor").DataTable({
+                ajax: {
+                    url: "api/instructor",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                       
+                    },
+                    
+                ]
+            });
+
+           
+        });
+    </script>
+}

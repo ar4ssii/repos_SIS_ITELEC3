@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Students";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table id="student" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Course</th>
+            <th>Year</th>
+            <th>Section</th>
+            <th>Age</th>
+            <th>Birthdate</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#student").DataTable({
+                ajax: {
+                    url: "api/students",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                       
+                    },
+                    {
+                        data: "address",
+                    },
+                    {
+                        data: "course.name",
+                    },
+                    {
+                        data: "year",
+                    },
+                    {
+                        data: "section",
+                    },
+                    {
+                        data: "age",
+                    },
+                    {
+                        data: "birthdate",
+                        render: function (data) {
+                            var date = new Date(data);
+                            var formattedDate = date.toLocaleDateString('en-PH', { month: 'short', day: 'numeric', year: 'numeric' });
+                            return formattedDate;
+                        }
+                    },
+                  
+                ]
+            });
+
+            
+        });
+    </script>
+}

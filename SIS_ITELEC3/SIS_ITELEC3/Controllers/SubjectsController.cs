@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace SIS_ITELEC3.Controllers
 {
+    [Authorize]
     public class SubjectsController : Controller
     {
         private ApplicationDbContext _context;
@@ -24,7 +25,10 @@ namespace SIS_ITELEC3.Controllers
         // GET: Subjects
         public ActionResult Index()
         {
-            return View();
+            if (User.IsInRole(RoleName.CanManageRole))    // Add this
+                return View("Index");                        //
+
+            return View("ReadOnlyIndex");
         }
 
         public ActionResult New()

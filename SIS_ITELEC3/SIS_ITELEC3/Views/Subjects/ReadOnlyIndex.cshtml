@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Subjects";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table id="subject" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Semester</th>
+            <th>Instructor</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#subject").DataTable({
+                ajax: {
+                    url: "api/subjects",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                       
+                    },
+                    {
+                        data: "year",
+                    },
+                    {
+                        data: "semester",
+                    },
+                    {
+                        data: "instructor.name",
+                    },
+                    
+                ]
+            });
+
+           
+        });
+    </script>
+}

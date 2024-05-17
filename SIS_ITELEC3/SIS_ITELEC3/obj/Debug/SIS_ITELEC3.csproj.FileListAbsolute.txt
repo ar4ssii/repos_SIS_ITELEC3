@@ -184,3 +184,4 @@ C:\Users\pc\Source\Repos\repos_SIS_ITELEC3\SIS_ITELEC3\SIS_ITELEC3\obj\Debug\SIS
 C:\Users\pc\Source\Repos\repos_SIS_ITELEC3\SIS_ITELEC3\SIS_ITELEC3\obj\Debug\SIS_ITELEC3.csproj.GenerateResource.Cache
 C:\Users\pc\Source\Repos\repos_SIS_ITELEC3\SIS_ITELEC3\SIS_ITELEC3\obj\Debug\SIS_ITELEC3.dll
 C:\Users\pc\Source\Repos\repos_SIS_ITELEC3\SIS_ITELEC3\SIS_ITELEC3\obj\Debug\SIS_ITELEC3.pdb
+C:\Users\pc\Source\Repos\repos_SIS_ITELEC3\SIS_ITELEC3\SIS_ITELEC3\obj\Debug\SIS_ITELEC3.Migrations.SeedUsersViaSqlScript.resources
