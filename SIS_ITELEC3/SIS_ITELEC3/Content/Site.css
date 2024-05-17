@@ -31,3 +31,7 @@ textarea {
 .input-validation-error{
     border: 2px solid red
 }
+
+.text-tertiary{
+    color: #1cbc9c;
+}
