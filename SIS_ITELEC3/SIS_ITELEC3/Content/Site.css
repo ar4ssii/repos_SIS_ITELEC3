@@ -35,3 +35,7 @@ textarea {
 .text-tertiary{
     color: #1cbc9c;
 }
+.row-cs-text{
+    font-weight:bold;
+    font-style:italic;
+}

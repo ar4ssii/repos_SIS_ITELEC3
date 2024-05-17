@@ -20,3 +20,32 @@
         </div>
     </div>
 </div>
+
+<br />
+<div class="container" style="margin-bottom:60px">
+    <h1 class="text-center">An easy-to-use Student Information System</h1>
+    <br />
+    <div class="row d-flex text-capitalize text-center">
+        <div class="col-lg-3">
+            <img src="@Url.Content("~/Images/reading.png")" alt="">
+            <h6 class="row-cs-text">Effortlessly organize student information</h6>
+            @Html.ActionLink("See more", "Index", "Students", null, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <div class="col-lg-3">
+            <img src="@Url.Content("~/Images/test.png")" alt="">
+            <h6 class="row-cs-text">Efficiently track and manage student grades</h6>
+            @Html.ActionLink("See more", "Index", "Grades", null, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <div class="col-lg-3">
+            <img src="@Url.Content("~/Images/books-stack-of-three.png")" alt="">
+            <h6 class="row-cs-text">Seamlessly oversee subjects and courses</h6>
+            @Html.ActionLink("See more", "Index", "Subjects", null, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <div class="col-lg-3">
+            <img src="@Url.Content("~/Images/male.png")" alt="">
+            <h6 class="row-cs-text">Easily add and manage instructors</h6>
+            @Html.ActionLink("See more", "Index", "Instructor", null, new { @class = "btn btn-primary btn-sm" })
+        </div>
+    </div>
+</div>
+
